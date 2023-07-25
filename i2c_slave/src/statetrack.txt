@@ -1,0 +1,22 @@
+IDLE; START; ADDRRW; ACK1; READ; WRITE; ACK2; 
+
+IDLE -> START: negedge SDA;
+START -> ADDRRW: posedge SCL;
+ADDRRW -> ACK1: rw bit addr read;
+{
+    ACKed = 0;
+    ACK1 -> READ: 
+
+    ACK1 -> WRITE:
+}
+{
+    READ -> ACK2: 8th bit of data read
+    WRITE -> ACK2: 8th bit of data written
+}
+{
+    ACK2 -> START: negedge SDA
+    ACK2 -> IDLE: posedge SDA
+}
+
+RW mode is the RW mode of slave device, not master device
+
