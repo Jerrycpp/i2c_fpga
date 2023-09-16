@@ -1,6 +1,6 @@
 IDLE; START; ADDRRW; ACK1; READ; WRITE; ACK2; 
 
-IDLE -> START: negedge SDA;
+IDLE -> START: negedge SDA and SCL high;
 START -> ADDRRW: posedge SCL;
 ADDRRW -> ACK1: rw bit addr read;
 {
