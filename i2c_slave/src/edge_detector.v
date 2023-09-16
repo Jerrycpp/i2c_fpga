@@ -1,11 +1,11 @@
-module edge_detector (clk, inp, neg, pos, rst);
-    input clk, inp, rst;
+module edge_detector (sys_clk, inp, neg, pos, sys_rst_n);
+    input sys_clk, inp, sys_rst_n;
     output neg, pos;
 
     reg q2;
 
-    always @ (posedge clk or posedge rst) begin
-        if (rst) begin
+    always @ (posedge sys_clk or negedge sys_rst_n) begin
+        if (!sys_rst_n) begin
             // q1 <= 0;
             q2 <= 0;
         end
